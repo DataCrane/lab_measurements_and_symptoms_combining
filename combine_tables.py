@@ -13,29 +13,29 @@ df = lab_data.merge(stratigraphy, how='left', on=['MYUWI'])
 columns_list= list(lab_data.columns.values) + ['STRATIGRAPHY_SYM', 'LITHOLOGY']
 df = df[(df.DEPTH >= df.TOP) & (df.DEPTH <= df.BOTTOM)][columns_list].reset_index(drop=True)
 
-# # write to xlsx
-# writer = pd.ExcelWriter('merged lab_str.xlsx')
-# df.to_excel(writer,'merged lab_str')
-# writer.save()
 
-### DRILLING SYMPTOMS AND STRATIGRAPHY MERGING ###
+### DRILLING SYMPTOMS AND LAB MEASUREMENTS MERGING ###
 
 # merge dataframes on MYUWI (wellnames)
-df2 = symptoms.merge(stratigraphy, how='left', on=['MYUWI'])
+df2 = symptoms.merge(lab_data, how='left', on=['MYUWI'])
 
 # filter by range
-columns_list2= list(symptoms.columns.values) + ['STRATIGRAPHY_SYM', 'LITHOLOGY']
+columns_list2= list(symptoms.columns.values) + list(lab_data.drop(['MYUWI'], axis=1).columns.values)
+df2 = df2[(df2.DEPTH >= df2.START) & (df2.DEPTH <= df2.STOP)][columns_list2].reset_index(drop=True)
 
-df2 = df2[((df2.START >= df2.TOP)
-           & (df2.STOP >= df2.TOP)
-           & (df2.START <= df2.BOTTOM)
-           & (df2.STOP <=df2.BOTTOM))
-          | ((df2.START <= df2.BOTTOM) & (df2.STOP >= df2.TOP))][columns_list2].reset_index(drop=True)
+
+### DRILLING SYMPTOMS, LAB MEASUREMENTS AND STRATIGRAPHY MERGING ###
+# merge dataframes on MYUWI (wellnames)
+Rdf = df2.merge(stratigraphy, how='left', on=['MYUWI'])
+
+# filter by range
+columns_list3= list(df2.columns.values) + ['STRATIGRAPHY_SYM', 'LITHOLOGY']
+Rdf = Rdf[(Rdf.DEPTH >= Rdf.TOP) & (Rdf.DEPTH <= Rdf.BOTTOM)][columns_list3].reset_index(drop=True)
 
 
 # write to xlsx
-writer = pd.ExcelWriter('test.xlsx')
-df2.to_excel(writer,'test')
+writer = pd.ExcelWriter('result2.xlsx')
+Rdf.to_excel(writer,'result2')
 writer.save()
 
 
