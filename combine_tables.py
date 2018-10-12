@@ -38,4 +38,12 @@ writer = pd.ExcelWriter('result2.xlsx')
 Rdf.to_excel(writer,'result2')
 writer.save()
 
+# # # If you want to connect stratigraphy directly to symptoms, use this set of conditions:
+# filter by range:
+# columns_list2= list(symptoms.columns.values) + ['STRATIGRAPHY_SYM', 'LITHOLOGY']
+# df2 = df2[((df2.START >= df2.TOP)
+#            & (df2.STOP >= df2.TOP)
+#            & (df2.START <= df2.BOTTOM)
+#            & (df2.STOP <=df2.BOTTOM))
+#           | ((df2.START <= df2.BOTTOM) & (df2.STOP >= df2.TOP))][columns_list2].reset_index(drop=True)
 
