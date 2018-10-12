@@ -10,7 +10,7 @@ symptoms = pd.read_csv('symptoms.csv')
 df = lab_data.merge(stratigraphy, how='left', on=['MYUWI'])
 
 # filter by range
-columns_list= list(lab_data.columns.values) + ['STRATIGRAPHY_SYM', 'LITHOLOGY']
+columns_list = list(lab_data.columns.values) + ['STRATIGRAPHY_SYM', 'LITHOLOGY']
 df = df[(df.DEPTH >= df.TOP) & (df.DEPTH <= df.BOTTOM)][columns_list].reset_index(drop=True)
 
 
@@ -20,7 +20,7 @@ df = df[(df.DEPTH >= df.TOP) & (df.DEPTH <= df.BOTTOM)][columns_list].reset_inde
 df2 = symptoms.merge(lab_data, how='left', on=['MYUWI'])
 
 # filter by range
-columns_list2= list(symptoms.columns.values) + list(lab_data.drop(['MYUWI'], axis=1).columns.values)
+columns_list2 = list(symptoms.columns.values) + list(lab_data.drop(['MYUWI'], axis=1).columns.values)
 df2 = df2[(df2.DEPTH >= df2.START) & (df2.DEPTH <= df2.STOP)][columns_list2].reset_index(drop=True)
 
 
@@ -29,7 +29,7 @@ df2 = df2[(df2.DEPTH >= df2.START) & (df2.DEPTH <= df2.STOP)][columns_list2].res
 Rdf = df2.merge(stratigraphy, how='left', on=['MYUWI'])
 
 # filter by range
-columns_list3= list(df2.columns.values) + ['STRATIGRAPHY_SYM', 'LITHOLOGY']
+columns_list3 = list(df2.columns.values) + ['STRATIGRAPHY_SYM', 'LITHOLOGY']
 Rdf = Rdf[(Rdf.DEPTH >= Rdf.TOP) & (Rdf.DEPTH <= Rdf.BOTTOM)][columns_list3].reset_index(drop=True)
 
 
@@ -40,7 +40,7 @@ writer.save()
 
 # # # If you want to connect symptoms and stratigraphy directly, use this set of conditions:
 # filter by range:
-# columns_list2= list(symptoms.columns.values) + ['STRATIGRAPHY_SYM', 'LITHOLOGY']
+# columns_list2 = list(symptoms.columns.values) + ['STRATIGRAPHY_SYM', 'LITHOLOGY']
 # df2 = df2[((df2.START >= df2.TOP)
 #            & (df2.STOP >= df2.TOP)
 #            & (df2.START <= df2.BOTTOM)
