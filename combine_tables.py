@@ -33,7 +33,7 @@ columns_list3= list(df2.columns.values) + ['STRATIGRAPHY_SYM', 'LITHOLOGY']
 Rdf = Rdf[(Rdf.DEPTH >= Rdf.TOP) & (Rdf.DEPTH <= Rdf.BOTTOM)][columns_list3].reset_index(drop=True)
 
 
-# write to xlsx
+# write to .xlsx
 writer = pd.ExcelWriter('result2.xlsx')
 Rdf.to_excel(writer,'result2')
 writer.save()
