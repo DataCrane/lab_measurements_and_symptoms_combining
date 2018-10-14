@@ -4,7 +4,7 @@ to mud symptoms and core measurements.
 
 .csv ARE DELETED DUE TO POTENTIAL ONWERSHIP CONSEQUENCES !! Description below should answer any queastions about data order.
 
-MYUWI is the key to well's name. 
+MYUWI is the key. 
 
 stratigraphy:
 contains 'STRATIGRAPHY_SYM' and 'LITHOLOGY' associated with 'TOP', 'BOTTOM' range.
