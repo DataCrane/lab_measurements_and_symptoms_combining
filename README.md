@@ -9,7 +9,7 @@ MYUWI is the key to well's name.
 stratigraphy:
 contains 'STRATIGRAPHY_SYM' and 'LITHOLOGY' associated with 'TOP', 'BOTTOM' range.
 
-lab_data:
+lab_data(core measurements):
 contains 'MYUWI', 'POROSITY', 'PERMEABILITY', 'BITUMINS_EXTRACT', associated with 'DEPTH' value.
 
 symptoms:
