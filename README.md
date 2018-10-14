@@ -2,7 +2,9 @@
 Simple project which merges three geological data tables, by range to range correlation. Goal is to impute stratigraphical division 
 to mud symptoms and core measurements. 
 
-MYUWI is the key to well's name (which is classified). 
+.csv ARE DELETED DUE TO POTENTIAL ONWERSHIP CONSEQUENCES !! Description below should answer any queastions about data order.
+
+MYUWI is the key to well's name. 
 
 stratigraphy:
 contains 'STRATIGRAPHY_SYM' and 'LITHOLOGY' associated with 'TOP', 'BOTTOM' range.
