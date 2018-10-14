@@ -1,4 +1,4 @@
-# lab_measurements_and_symptoms_combining
+# multiple-range-merging
 Simple project which merges three geological data tables, by range to range correlation. Goal is to impute stratigraphical division 
 to mud symptoms and core measurements. 
 
