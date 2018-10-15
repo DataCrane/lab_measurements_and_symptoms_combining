@@ -2,7 +2,7 @@
 Simple project which merges three geological data tables, by range to range correlation. Goal is to impute stratigraphical division 
 to mud symptoms and core measurements. 
 
-.csv ARE DELETED DUE TO POTENTIAL ONWERSHIP CONSEQUENCES !! Description below should answer any queastions about data order.
+.csv ARE DELETED DUE TO POTENTIAL ONWERSHIP CONSEQUENCES !! Short data order description below : 
 
 MYUWI is the key. 
 
