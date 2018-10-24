@@ -14,7 +14,7 @@ columns_list = list(lab_data.columns.values) + ['STRATIGRAPHY_SYM', 'LITHOLOGY']
 df = df[(df.DEPTH >= df.TOP) & (df.DEPTH <= df.BOTTOM)][columns_list].reset_index(drop=True)
 
 
-### DRILLING SYMPTOMS AND LAB MEASUREMENTS MERGING ###
+### DRILLING SYMPTOMS AND LAB MEASUREMENTS MERGING
 
 # merge dataframes on MYUWI (wellnames)
 df2 = symptoms.merge(lab_data, how='left', on=['MYUWI'])
@@ -24,7 +24,7 @@ columns_list2 = list(symptoms.columns.values) + list(lab_data.drop(['MYUWI'], ax
 df2 = df2[(df2.DEPTH >= df2.START) & (df2.DEPTH <= df2.STOP)][columns_list2].reset_index(drop=True)
 
 
-### DRILLING SYMPTOMS, LAB MEASUREMENTS AND STRATIGRAPHY MERGING ###
+### DRILLING SYMPTOMS, LAB MEASUREMENTS AND STRATIGRAPHY MERGING
 # merge dataframes on MYUWI (wellnames)
 Rdf = df2.merge(stratigraphy, how='left', on=['MYUWI'])
 
@@ -34,9 +34,9 @@ Rdf = Rdf[(Rdf.DEPTH >= Rdf.TOP) & (Rdf.DEPTH <= Rdf.BOTTOM)][columns_list3].res
 
 
 # write to .xlsx
-writer = pd.ExcelWriter('result2.xlsx')
-Rdf.to_excel(writer,'result2')
-writer.save()
+# writer = pd.ExcelWriter('result2.xlsx')
+# Rdf.to_excel(writer,'result2')
+# writer.save()
 
 # # # If you want to connect symptoms and stratigraphy directly, use this set of conditions:
 # filter by range:
