@@ -162,4 +162,4 @@ for i in barchart3.patches:
             # str(round((i.get_height()/total)*100, 2))+'%', fontsize=15, # PERCENT
             str(round(i.get_height(), 2)),  va='center', fontsize=6, color='black')
 
-# plot.show(barchart3)
+plot.show(barchart3)
