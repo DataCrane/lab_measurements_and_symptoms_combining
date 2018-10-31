@@ -51,17 +51,15 @@ Rdf = Rdf[(Rdf.DEPTH >= Rdf.TOP) & (Rdf.DEPTH <= Rdf.BOTTOM)][columns_list3].res
 
 ### What is the samples frequency per MYUWI(well id) and STRATIGRAPHY_SYM ? ? ?
 
-median_PER_BIT = (Rdf
-                  # .dropna(subset=['POROSITY', 'PERMEABILITY']) # pandas automatically exclude NaN in aggr. f.
-                  # .assign(n=0)
-                  .groupby(['MYUWI', 'STRATIGRAPHY_SYM'])
-                 # .n.count().sort_values(ascending=False)
-                 ['POROSITY','PERMEABILITY', 'BITUMINS_EXTRACT'].count()
-                  )
+sample_count = (Rdf
+                .groupby(['MYUWI', 'STRATIGRAPHY_SYM'])
+                # .n.count().sort_values(ascending=False)
+                ['POROSITY','PERMEABILITY', 'BITUMINS_EXTRACT'].count()
+                )
 
 ### prepare plot
 
-barchart = median_PER_BIT.plot.bar()
+barchart = sample_count.plot.bar()
 
 
 barchart.set_title("samples frequency", fontsize=18)
@@ -93,8 +91,8 @@ for i in barchart.patches:
 ### What is the median PERMEABILITY and BIT_EXTR. per MYUWI(well id) and STRATIGRAPHY_SYM ? ? ?
 
 median_PERM_BIT = (Rdf
-                  .groupby(['MYUWI', 'STRATIGRAPHY_SYM'])
-                  ['PERMEABILITY', 'BITUMINS_EXTRACT'].median()
+                   .groupby(['MYUWI', 'STRATIGRAPHY_SYM'])
+                   ['PERMEABILITY', 'BITUMINS_EXTRACT'].median()
                    )
 
 ### prepare plot
@@ -130,14 +128,14 @@ plot.show(barchart2)
 
 ### What is the median POROSITY per MYUWI(well id) and STRATIGRAPHY_SYM ? ? ?
 
-median_PERM_BIT = (Rdf
-                  .groupby(['MYUWI', 'STRATIGRAPHY_SYM'])
-                  ['POROSITY'].median()
-                   )
+median_POR = (Rdf
+              .groupby(['MYUWI', 'STRATIGRAPHY_SYM'])
+              ['POROSITY'].median()
+              )
 
 ### prepare plot
 
-barchart3 = median_PERM_BIT.plot.bar()
+barchart3 = median_POR.plot.bar()
 
 
 barchart3.set_title("median POROSITY", fontsize=18)
