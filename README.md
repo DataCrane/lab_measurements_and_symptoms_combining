@@ -1,5 +1,5 @@
 # multiple-range-merging
-Simple project which merges three geological data tables (depth domain), by range to range correlation. Goal is to impute stratigraphical division to mud symptoms and core measurements.
+Simple project which merges three geological data tables (depth domain), by range to range correlation. Goal is to impute stratigraphical division to mud symptoms and core measurements. Calculations and charts composed.
 
 + median calculations and bar charts. 
 
