@@ -49,16 +49,16 @@ Rdf = Rdf[(Rdf.DEPTH >= Rdf.TOP) & (Rdf.DEPTH <= Rdf.BOTTOM)][columns_list3].res
 #            & (df2.STOP <=df2.BOTTOM))
 #           | ((df2.START <= df2.BOTTOM) & (df2.STOP >= df2.TOP))][columns_list2].reset_index(drop=True)
 
-### What is the samples frequency per MYUWI(well id) and STRATIGRAPHY_SYM ? ? ?
 
+### What is the samples frequency per MYUWI(well id) and STRATIGRAPHY_SYM ? ? ?
 sample_count = (Rdf
                 .groupby(['MYUWI', 'STRATIGRAPHY_SYM'])
                 # .n.count().sort_values(ascending=False)
                 ['POROSITY','PERMEABILITY', 'BITUMINS_EXTRACT'].count()
                 )
 
-### prepare plot
 
+### prepare plot
 barchart = sample_count.plot.bar()
 
 
@@ -85,11 +85,11 @@ for i in barchart.patches:
     barchart.text(i.get_x(), i.get_height(), \
             # str(round((i.get_height()/total)*100, 2))+'%', fontsize=15, # PERCENT
             str(round(i.get_height(), 2)),  va='center', fontsize=6, color='black')
+plot.show()
 
-# plot.show()
+
 
 ### What is the median PERMEABILITY and BIT_EXTR. per MYUWI(well id) and STRATIGRAPHY_SYM ? ? ?
-
 median_PERM_BIT = (Rdf
                    .groupby(['MYUWI', 'STRATIGRAPHY_SYM'])
                    ['PERMEABILITY', 'BITUMINS_EXTRACT'].median()
@@ -123,8 +123,9 @@ for i in barchart2.patches:
     barchart2.text(i.get_x(), i.get_height(), \
             # str(round((i.get_height()/total)*100, 2))+'%', fontsize=15, # PERCENT
             str(round(i.get_height(), 2)),  va='center', fontsize=6, color='black')
+plot.show()
 
-plot.show(barchart2)
+
 
 ### What is the median POROSITY per MYUWI(well id) and STRATIGRAPHY_SYM ? ? ?
 
@@ -161,5 +162,4 @@ for i in barchart3.patches:
     barchart3.text(i.get_x(), i.get_height(), \
             # str(round((i.get_height()/total)*100, 2))+'%', fontsize=15, # PERCENT
             str(round(i.get_height(), 2)),  va='center', fontsize=6, color='black')
-
-plot.show(barchart3)
+plot.show()
