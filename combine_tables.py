@@ -1,5 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plot
+import seaborn as sns
 import numpy as np
 
 ### LAB MEASUREMENTS AND STRATIGRAPHY MERGING ###
@@ -126,3 +127,32 @@ barchart3.set_ylabel("", fontsize=18)
 
 # create labels
 labels(barchart3)
+
+# Is porosity and permeability correlated with bitumins volume ?
+Ca2_set = Rdf[Rdf.STRATIGRAPHY_SYM.isin(['Ca2'])]
+cor_col = ['POROSITY', 'PERMEABILITY', 'BITUMINS_EXTRACT']
+
+#scatterplot
+sns.set()
+cols = cor_col
+sns.pairplot(Ca2_set[cor_col], size = 2.5)
+plot.show()
+# COMMENT: Just POROSITY vs BITUMINS_EXTRACT seems to have correlation.
+# Let's have a closer look on this.
+
+# POROSITY vs BITUMINS_EXTRACT across boreholes
+
+#bivariate analysis BITUMINS_EXTRACT/POROSITY
+def bivariate_bit_por(borehole=None, title=None):
+    Ca2_set = Rdf[Rdf.STRATIGRAPHY_SYM.isin(['Ca2']) & Rdf.MYUWI.isin([borehole])]
+    var = 'BITUMINS_EXTRACT'
+    data = pd.concat([Ca2_set['POROSITY'], Ca2_set[var]], axis=1)
+    scatterplot = data.plot.scatter(y=var, x='POROSITY')#, ylim=(0,800000));
+    scatterplot.set_title(title, fontsize=18)
+    plot.show()
+
+
+bivariate_bit_por('MY3', "MY3, CA2")
+bivariate_bit_por('MY58', "MY58, CA2")
+bivariate_bit_por('MY84', "MY84, CA2")
+
