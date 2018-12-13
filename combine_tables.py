@@ -151,7 +151,7 @@ def bivariate_bit_por(borehole=None, title=None):
     scatterplot.set_title(title, fontsize=18)
     plot.show()
 
-
+#bivariate analysis across 3 most common boreholes (MY3, MY58, MY84)
 bivariate_bit_por('MY3', "MY3, CA2")
 bivariate_bit_por('MY58', "MY58, CA2")
 bivariate_bit_por('MY84', "MY84, CA2")
